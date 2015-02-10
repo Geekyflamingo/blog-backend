@@ -6,9 +6,9 @@ class PostsController < ApplicationController
 
     if params[:query]
       post_search = Post.where("title like ? OR body like ?", "%#{ params[:query] }%", "%#{ params[:query] }%")
-      render json: post_search
+      render json: post_search, except: [:comments, :users]
     else
-      render json: @posts
+      render json: @posts, except: [:comments, :users]
     end
 
   end

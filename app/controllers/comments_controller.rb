@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-    render json: Comment.all
+    render json: Comment.all, except: [:users, :posts]
   end
 
   def show
